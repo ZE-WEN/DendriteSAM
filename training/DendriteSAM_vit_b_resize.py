@@ -7,9 +7,9 @@ import micro_sam.training as sam_training
 from micro_sam.util import export_custom_sam_model
 
 def get_dataloader(split, patch_shape, batch_size, train_instance_segmentation):
-    image_dir = 'img_dir2' # change your image directory here
-    segmentation_dir = 'mask_dir2' # change your mask directory here
-    raw_key, label_key = "*.tif", "*.tif" # input data type, all tif files
+    image_dir = 'img_dir2'  # change your image directory here
+    segmentation_dir = 'mask_dir2'  # change your mask directory here
+    raw_key, label_key = "*.tif", "*.tif" # input data type, tif files
 
     if split == "train":
         roi = np.s_[:80, :, :] # for training
@@ -59,7 +59,7 @@ def run_training(checkpoint_name, model_type, train_instance_segmentation):
         n_epochs=100,
         early_stopping=100,
         n_objects_per_batch=n_objects_per_batch,
-        checkpoint_path='vit_b_em_boundaries.pth', # initialize the wights
+        checkpoint_path='vit_b.pt', # initialize the wights
         with_segmentation_decoder=train_instance_segmentation,
         device=device,
         save_every_kth_epoch=5,
@@ -69,7 +69,7 @@ def run_training(checkpoint_name, model_type, train_instance_segmentation):
 def export_model(checkpoint_name, model_type):
     """Export the trained model."""
     
-    export_path = "./finetuned_dendrite_model_em_resize_vit_b.pth" # final model name
+    export_path = "./ViT-B-resize-EM-dendrite.pth" # final model name
     checkpoint_path = os.path.join("checkpoints", checkpoint_name, "best.pt")
     export_custom_sam_model(
         checkpoint_path=checkpoint_path,
