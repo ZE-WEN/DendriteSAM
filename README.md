@@ -1,5 +1,5 @@
 # DendriteSAM
-This repository contains the code for training the DendriteSAM model, designed for dendritic segmentation in microscopy images.
+This repository contains the code for training the DendriteSAM model, designed for dendritic segmentation in electron microscopy images.
 
 The training scirpts are adapted from the [Segment Anything for Microscopy](https://github.com/computational-cell-analytics/micro-sam) repository. 
 
