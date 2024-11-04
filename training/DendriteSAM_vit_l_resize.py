@@ -57,7 +57,7 @@ def run_training(checkpoint_name, model_type, train_instance_segmentation):
         train_loader=train_loader,
         val_loader=val_loader,
         n_epochs=100,
-        early_stopping=100,
+        early_stopping=None,
         n_objects_per_batch=n_objects_per_batch,
         checkpoint_path='vit_l.pt', # initialize the wights, you need to change it when initialzing with your weights
         with_segmentation_decoder=train_instance_segmentation,
